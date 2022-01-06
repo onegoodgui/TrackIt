@@ -2,10 +2,12 @@
 import styled from 'styled-components';
 
 
-const LoginContainer = styled.div`
+const Container = styled.div`
 
     width: 100vw;
     min-height: 100vh;
+
+    gap: 10px;
 
     display: flex;
     flex-direction: column;
@@ -14,16 +16,17 @@ const LoginContainer = styled.div`
     img{
         height: fit-content;
         margin-top: 10vh;
-        margin-bottom: 10vh;
+        margin-bottom: 5vh;
     }
 
     form{
         display: flex;
         flex-direction: column;
         gap: 10px;
+        
     }
 
-    a{
+    p{
         margin-top: 3vh;
 
         color: #52B6FF;
@@ -35,7 +38,6 @@ const LoginContainer = styled.div`
 const Input = styled.input`
 
     height: 45px;
-    
     width: 90vw;
     max-width: 300px;
 
@@ -44,11 +46,17 @@ const Input = styled.input`
 
     padding-left: 10px;
 
+    color: #AFAFAF;
     font-size: 20px;
+
 
     :: placeholder{
         color: #DBDBDB;
     }
+
+    input:disabled {
+        background: #F2F2F2;
+      }
 `
 const Button = styled.button`
 
@@ -67,9 +75,9 @@ const Button = styled.button`
 
     font-size: 20px;
     color: white;
-
+    opacity: ${props => props.disabled === true ? 0.7 : 1};
    
 `
 
-export default LoginContainer;
+export default Container;
 export {Input, Button};
