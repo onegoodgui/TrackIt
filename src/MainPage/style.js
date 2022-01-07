@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 
 
 const PageContainer = styled.div`
@@ -18,6 +18,7 @@ p{
 
     color: #666666;
     font-size: 18px;
+    line-height: 22px;
 
 
 }
@@ -58,7 +59,40 @@ button{
     justify-content: center;
 }
 
-
 `
 
-export{PageContainer, Title}
+const Footer = styled.footer`
+
+width: 100vw;
+height: 80px;
+
+position: fixed;
+bottom: 0;
+
+background-color: #FFF;
+
+padding: 0 10vw;
+
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+span{
+    color: #52B6FF;
+
+    font-size: 18px;
+}
+`
+
+const ProgressBarContainer = styled.div`
+height: ${props => props.diameter};
+width: ${props => props.diameter};
+
+text-anchor: middle;
+dominant-baseline: middle;
+stroke-linecap: round;
+
+margin-bottom: 60px;
+`
+
+export{PageContainer, Title, Footer, ProgressBarContainer}

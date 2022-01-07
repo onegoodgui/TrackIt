@@ -1,21 +1,25 @@
 import TrackIt from '../Images/TrackItLogo.svg'
 import Container from '../Login/style'
 import { Input, Button } from '../Login/style';
-import {useState, useEffect} from 'react';
+import {useState, useContext} from 'react';
+import { DataContext } from '../App';
 import Loader from "react-loader-spinner";
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
+
+
 
 
 export default function Login(){
 
     const [password,setPassword] = useState('');
     const [email, setEmail] = useState('');
-    const [data, setData] = useState([]);
     const [buttonContent, setButtonContent] = useState('Entrar');
     const [visibility, setVisibility] = useState(false);
     const [disable, setDisable] = useState(false);
     let navigate = useNavigate();
+
+    const [data, setData] = useState([]);
 
     const loginItems = [{placeholder: 'email', type: 'email', state: setEmail}, {placeholder: 'senha', type: 'password', state: setPassword}];
 
@@ -27,7 +31,8 @@ export default function Login(){
 
             requisicao.then(resposta => {
                 setData(resposta.data)
-                navigate('/sucesso')});
+                localStorage.setItem('data', JSON.stringify(resposta.data));
+                navigate('/habitos')});
 
             requisicao.catch(() => {
                 setButtonContent('Entrar');
@@ -45,12 +50,12 @@ export default function Login(){
     }
 
     return(
-        <Container>
-
-            <img src={TrackIt}></img>
-            <form method='post'>
-                {loginItems.map((item) => <Input disabled={disable} placeholder={item.placeholder} type={item.type} onChange={(e) => item.state(e.target.value)}></Input> )}
-            </form>
+        <DataContext.Provider value={{data, setData}}>
+            <Container>
+                <img src={TrackIt}></img>
+                <form method='post'>
+                    {loginItems.map((item) => <Input disabled={disable} placeholder={item.placeholder} type={item.type} onChange={(e) => item.state(e.target.value)}></Input> )}
+                </form>
                 <Button onClick={()=> RequestLogin()} disabled={disable}> {buttonContent}
                     <Loading
                         type="ThreeDots"
@@ -63,9 +68,8 @@ export default function Login(){
                 <Link to={`/cadastro`}> 
                     <p href='/'>Não tem uma conta? Cadastre-se!</p>
                 </Link>
-
-
-        </Container>
+            </Container>
+        </DataContext.Provider>
     )
 }
 

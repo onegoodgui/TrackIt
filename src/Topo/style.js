@@ -11,7 +11,25 @@ height: 80px;
 position: fixed;
 z-index: 1;
 
-margin-bottom: 80px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+padding-left: 5%;
+padding-right: 5%;
+
+span{
+    font-family: 'Playball', cursive;
+    font-size: 39px;
+    color: #FFF;
+
+}
+
+img{
+    height: 80%;
+    border-radius: 80px;
+    object-fit: contain;
+}
 
 `
 
