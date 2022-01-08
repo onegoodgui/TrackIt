@@ -6,7 +6,6 @@ export default function Topo(){
 
     let data = localStorage.getItem('data');
     data = JSON.parse(data);
-    console.log(data);
 
     return(
     
