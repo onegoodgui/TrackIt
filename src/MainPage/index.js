@@ -1,11 +1,13 @@
 import Topo from "../Topo"
-import { PageContainer, Title, Footer, ProgressBarContainer, NovoHabito, Habito, Botao } from "./style"
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-import { DataContext } from "../App";
+import { PageContainer, Title, NovoHabito, Habito, Botao } from "./style"
+import { Footer, ProgressCircle } from "../Menu/style";
 import { useContext, useState, useEffect } from "react";
-import Loader from "react-loader-spinner";
+import { ValueContext } from "../App";
 import { Loading } from "../Login";
 import axios from "axios";
+import { TrashOutline } from 'react-ionicons'
+import { Link } from "react-router-dom";
+
 
 export default function MainPage(){
 
@@ -19,6 +21,8 @@ export default function MainPage(){
     const [requestData, setRequestData] = useState([]);
     const [listaHabitos, setListaHabitos] = useState([]);
     const [selectedDays, setSelectedDays] = useState([]);
+    const {value, setValue} = useContext(ValueContext); 
+
 
     let data = localStorage.getItem('data');
     data = JSON.parse(data);
@@ -122,11 +126,13 @@ export default function MainPage(){
 
         requisicao.then(resposta => setListaHabitos(resposta.data));
     }
-
-    function verifySelectedDays(day,index){
-        console.log('entrou aqui!')
-    }
     
+    function deletarHabito(id){
+
+        const req = axios.delete(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`,config);
+        req.then(() => listarHabitos());
+        req.catch(erro => console.log(erro));
+    }
 
     return(
         <>
@@ -160,10 +166,18 @@ export default function MainPage(){
             </NovoHabito>
 
             <p>{emptyMessage}</p>
+
             {listaHabitos.map((habito) => 
-                <Habito key={habito.id}> {habito.name}
+            
+                <Habito key={habito.id}> 
+                    <div className="upper">
+                        {habito.name}
+                        <TrashOutline onClick={() => deletarHabito(habito.id)} color={'#00000'} height="20px" width="20px"/>
+                    </div>
+
                     <div>
                         {days.map((day, index) => {
+
                             let selecionado = 0;
                             if(habito.days.includes(index)){
                                 selecionado = true
@@ -178,9 +192,17 @@ export default function MainPage(){
                 </Habito>
             )}
             <Footer>
-                <span> Hábitos </span>
-                    <ProgressCircle value={'0'} text={'Hoje'} diameter={'80px'}/>
-                <span> Histórico </span>
+                <Link to={'/habitos'}>
+                    <button> Hábitos </button>
+                </Link>
+
+                <Link to={'/hoje'}>
+                    <ProgressCircle value={value} text={'Hoje'} diameter={'80px'}/>
+                </Link>
+
+                <Link to={'/historico'}>
+                    <button> Histórico </button>
+                </Link>
             </Footer>
         </PageContainer>
         </>
@@ -188,22 +210,3 @@ export default function MainPage(){
 }
 
 
-function ProgressCircle({value, text, diameter}){
-    return(
-        <ProgressBarContainer diameter={diameter}>
-            <CircularProgressbar
-            value={value}
-            text={text}
-            background
-            backgroundPadding={6}
-            styles={buildStyles({
-                backgroundColor: "#3e98c7",
-                textColor: "#fff",
-                pathColor: "#fff",
-                trailColor: "transparent"
-            })}
-            />
-
-        </ProgressBarContainer>
-    )
-}

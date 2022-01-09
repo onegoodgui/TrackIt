@@ -7,6 +7,7 @@ const PageContainer = styled.div`
 background-color: #F2F2F2;
 
 width: 100vw;
+min-height: 100vh;
 height: fit-content;
 
 padding-bottom: 100px;
@@ -61,40 +62,6 @@ button{
     justify-content: center;
 }
 
-`
-
-const Footer = styled.footer`
-
-width: 100vw;
-height: 80px;
-
-position: fixed;
-bottom: 0;
-
-background-color: #FFF;
-
-padding: 0 10vw;
-
-display: flex;
-align-items: center;
-justify-content: space-between;
-
-span{
-    color: #52B6FF;
-
-    font-size: 18px;
-}
-`
-
-const ProgressBarContainer = styled.div`
-height: ${props => props.diameter};
-width: ${props => props.diameter};
-
-text-anchor: middle;
-dominant-baseline: middle;
-stroke-linecap: round;
-
-margin-bottom: 60px;
 `
 
 const NovoHabito = styled.div`
@@ -228,6 +195,17 @@ div{
     align-items: flex-start;
 }
 
+div.upper{
+    width: 100%;
+    height: 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    margin-bottom: 5px;
+}
+
 `
 
-export{PageContainer, Title, Footer, ProgressBarContainer, NovoHabito, Habito, Botao}
+export{PageContainer, Title, NovoHabito, Habito, Botao}

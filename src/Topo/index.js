@@ -1,6 +1,4 @@
 import { Header } from "./style"
-import { DataContext } from "../App";
-import { useContext } from "react";
 
 export default function Topo(){
 

@@ -2,7 +2,6 @@ import TrackIt from '../Images/TrackItLogo.svg'
 import Container from '../Login/style'
 import { Input, Button } from '../Login/style';
 import {useState, useContext} from 'react';
-import { DataContext } from '../App';
 import Loader from "react-loader-spinner";
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
@@ -50,7 +49,6 @@ export default function Login(){
     }
 
     return(
-        <DataContext.Provider value={{data, setData}}>
             <Container>
                 <img src={TrackIt}></img>
                 <form method='post'>
@@ -69,7 +67,6 @@ export default function Login(){
                     <p href='/'>Não tem uma conta? Cadastre-se!</p>
                 </Link>
             </Container>
-        </DataContext.Provider>
     )
 }
 
