@@ -47,7 +47,6 @@ export default function MainPage(){
     }
     ,[])
         
-    console.log(listaHabitos);
 
 
     function selectDay(index, days){

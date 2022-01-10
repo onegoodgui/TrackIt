@@ -93,7 +93,6 @@ function toggleHabito(habito){
     }
 }
 
-console.log(habitosData);
 
     return(
     <>

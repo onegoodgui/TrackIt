@@ -31,6 +31,7 @@ const ProgressBarContainer = styled.div`
 height: ${props => props.diameter};
 width: ${props => props.diameter};
 
+font-size: 18px;
 text-anchor: middle;
 dominant-baseline: middle;
 stroke-linecap: round;
@@ -47,10 +48,10 @@ function ProgressCircle({value, text, diameter}){
             background
             backgroundPadding={6}
             styles={buildStyles({
-                backgroundColor: "#3e98c7",
+                backgroundColor: "#52B6FF",
                 textColor: "#fff",
                 pathColor: "#fff",
-                trailColor: "transparent"
+                trailColor: "transparent",
             })}
             />
 

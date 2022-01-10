@@ -59,11 +59,9 @@ export default function Historico(){
                 dummyObject.date = habitsDates[i];
                 dummyObject.status = completionArray[i];
                 habitsData[i] = {...dummyObject};
-                console.log(habitsData);
                 
             }
 
-            console.log(resposta)
             setHistorico(resposta.data);
             
         });
@@ -78,7 +76,7 @@ export default function Historico(){
 
         let data = `${ano}-${mes+1}-${dia}`;
         data = dayjs(data).format('DD/MM/YYYY');
-        console.log(data);
+
         let index = -1;
 
         for(let i=0; i<habitos.length; i++){
@@ -101,8 +99,6 @@ export default function Historico(){
 
     }
 
-    console.log(Calendar);
-
     return(
         <>
             <Topo/>
@@ -114,7 +110,7 @@ export default function Historico(){
                 Histórico
             </Title>
             <CalendarStyle >
-                <Calendar locale="pt-br" formatDay={(locale, date) => marcarData('pt-br', date, habitsData)}/>
+                <Calendar locale="pt-br" formatDay={(locale, date) => marcarData('pt-br', date, habitsData)} calendarType="US"/>
             </CalendarStyle>
 
             <Footer>

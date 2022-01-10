@@ -48,8 +48,8 @@ align-items: center;
     justify-content: center;
     align-items: center;
 
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
 
     border-radius: 50%;
 

@@ -5,6 +5,7 @@ import {useState, useContext} from 'react';
 import Loader from "react-loader-spinner";
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react/cjs/react.development';
 
 
 
@@ -21,6 +22,7 @@ export default function Login(){
     const [data, setData] = useState([]);
 
     const loginItems = [{placeholder: 'email', type: 'email', state: setEmail}, {placeholder: 'senha', type: 'password', state: setPassword}];
+
 
     function RequestLogin(){
 
@@ -47,6 +49,15 @@ export default function Login(){
             }
 
     }
+
+    useEffect(() => {
+
+        let localData = localStorage.getItem('data');
+        localData = JSON.parse(localData);
+        if(localData.length !== 0){
+            navigate('/habitos');
+        }
+    },[])
 
     return(
             <Container>
