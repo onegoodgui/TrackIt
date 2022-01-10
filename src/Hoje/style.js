@@ -37,14 +37,14 @@ border-radius: 5px;
 display: flex;
 justify-content: space-between;
 
-padding:1%;
+padding :2px;
 margin-bottom: 30px;
 
 position: relative;
 
 div.Text{
-    padding-left: 3%;
-    padding-top: 3%;
+    padding-left: 10px;
+    padding-top: 10px;
 
     display: flex;
     flex-direction: column;

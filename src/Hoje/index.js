@@ -14,7 +14,8 @@ export default function Hoje(){
 
     const [habitosData, setHabitosData] = useState([]);
     const {value, setValue} = useContext(ValueContext); 
-
+    require('dayjs/locale/pt-br');
+    dayjs.locale('pt-br');
 
     let data = localStorage.getItem('data');
     data = JSON.parse(data);
@@ -28,7 +29,6 @@ export default function Hoje(){
     useEffect(() =>{
         const req = axios.get('https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today', config)
         req.then(resposta => {
-            setHabitosData(resposta.data);
 
             let count= 0;
             for(let i=0; i<resposta.data.length; i++){
@@ -37,7 +37,11 @@ export default function Hoje(){
                 }
             }
 
-            setValue((count/resposta.data.length)*100);
+            setValue(Math.round((count/(resposta.data.length))*100));
+
+            setHabitosData(resposta.data);
+
+           
         })
         
     },[])
@@ -62,7 +66,7 @@ function toggleHabito(habito){
                     }
                 }
     
-                setValue((count/resposta.data.length)*100);
+                setValue(Math.round((count/(resposta.data.length))*100));
             })
         }
             
@@ -83,7 +87,7 @@ function toggleHabito(habito){
                     }
                 }
     
-                setValue((count/resposta.data.length)*100);
+                setValue(Math.round((count/(resposta.data.length))*100));
             })
         });
     }

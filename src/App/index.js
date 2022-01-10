@@ -2,6 +2,7 @@ import Login from "../Login"
 import Cadastro from "../Cadastro";
 import MainPage from "../MainPage";
 import Hoje from "../Hoje";
+import Historico from "../Historico";
 import { useState ,createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -21,6 +22,7 @@ export default function App(){
                     <Route path='/cadastro' element={<Cadastro/>} ></Route>
                     <Route path='/habitos' element={<MainPage/>}></Route>
                     <Route path='/hoje' element={<Hoje/>}></Route>
+                    <Route path='/historico' element={<Historico/>}></Route>
                 </Routes>
             </BrowserRouter>
         </ValueContext.Provider>
