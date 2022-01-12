@@ -24,7 +24,7 @@ span{
 
 const CalendarStyle = styled.div`
 
-
+position: relative;
 
 .react-calendar{
     height: 60%;
@@ -35,6 +35,10 @@ const CalendarStyle = styled.div`
     margin: 0 auto 20px auto;
 }
 
+.react-calendar__tile:enabled:hover, .react-calendar__tile:enabled:focus{
+    background-color: inherit;
+    color: black;
+}
 `
 
 const DayContainer = styled.div`
@@ -55,7 +59,53 @@ align-items: center;
 
     background-color: ${props => props.color};
 }
-
 `
 
-export {Title, CalendarStyle, DayContainer};
+const SelectedHabit = styled.div`
+
+background-color: lightblue;
+
+width: 60vw;
+height: 45vw;
+
+margin: 0 auto;
+padding: 5% 0;
+
+position: absolute;
+overflow-y: scroll;
+z-index: 2;
+
+top:30%;
+left:20%;
+
+opacity: 0.9;
+display:${props => props.display};
+flex-direction: column;
+align-items: center;
+
+gap: 5px;
+
+border-radius: 5px;
+
+.container {
+
+    width:80%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 5px;
+}
+p{
+    display:flex;
+    align-items: center;
+
+    color: black;
+    height:fit-content;
+    width: 70%;
+}
+`
+
+export {Title, CalendarStyle, SelectedHabit, DayContainer};
