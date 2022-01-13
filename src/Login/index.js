@@ -54,7 +54,7 @@ export default function Login(){
 
         let localData = localStorage.getItem('data');
         localData = JSON.parse(localData);
-        if(localData.length !== 0){
+        if(localData.length !== null){
             navigate('/habitos');
         }
     },[])
