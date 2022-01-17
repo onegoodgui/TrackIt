@@ -2,23 +2,30 @@ import Topo from "../Topo"
 import { PageContainer } from "../MainPage/style";
 import { Footer, ProgressCircle } from "../Menu/style";
 import { DiaDeHoje, Habito, CurrentCount, HighestCount, CheckBox } from "./style";
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, } from "react";
 import { ValueContext } from "../App";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import 'dayjs/locale/pt-br'
 import dayjs from "dayjs";
 
 
 export default function Hoje(){
 
+    let navigate = useNavigate();
     const [habitosData, setHabitosData] = useState([]);
     const {value, setValue} = useContext(ValueContext); 
     require('dayjs/locale/pt-br');
     dayjs.locale('pt-br');
 
+
     let data = localStorage.getItem('data');
     data = JSON.parse(data);
+
+    setTimeout(() => {
+        localStorage.removeItem('data');
+        navigate('/');
+    }, 1000*60);
 
     const config = {
         headers: {

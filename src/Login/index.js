@@ -33,7 +33,7 @@ export default function Login(){
             requisicao.then(resposta => {
                 setData(resposta.data)
                 localStorage.setItem('data', JSON.stringify(resposta.data));
-                navigate('/habitos')});
+                navigate('/hoje')});
 
             requisicao.catch(() => {
                 setButtonContent('Entrar');
@@ -41,7 +41,7 @@ export default function Login(){
                 setDisable(false);
                 alert('Erro!')});
 
-            if(data.length === 0){
+            if(data.length === 0 || data === null){
                 setButtonContent(null);
                 setVisibility(true);
                 setDisable(true);
@@ -54,8 +54,8 @@ export default function Login(){
 
         let localData = localStorage.getItem('data');
         localData = JSON.parse(localData);
-        if(localData.length !== null){
-            navigate('/habitos');
+        if(localData !== null){
+            navigate('/hoje');
         }
     },[])
 
