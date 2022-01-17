@@ -8,14 +8,16 @@
 
 <h1> About </h1>
 
-<p> This web application allows the user to simulate the ticket booking process. Below are the implemented features:</p>
+<p> In this app you can set daily activities and track your 'success' completing them (in time!). Below are the implemented features:</p>
 
 <ul>
-  <li> Movie Catalog </li>
-  <li> Dates and times available </li>
-  <li> Seats map of the chosen room and their availability </li>
-  <li> Name and personal ID document inputs </li>
-  <li> Success page with the personal and movie session infos </li>
+  <li> A login page, that allows you to enter your account if you have already signed up</li>
+  <li> A sign-up page, where you can register an e-mail and password and create an account </li>
+  <li> A page of the day, where you can check the activities you set yourself to do in the current day. In this page, you can click on the activities you have already done and mark them as completed! </li>
+  <li> The day habits tracking wheel, where you can look to quickly see your progress in the day </li>
+  <li> A habits page, where you can find all your activities and manage them as you wish, adding new ones or deleting some. </li>
+  <li> A history page, with a full and functional calendar. You can click on past days, starting from the day you first logged in, to check which activities you completed or missed in each past day.</li>
+  
  </ul>
 
 <h1>Technologies</h1>
