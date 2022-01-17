@@ -3,7 +3,7 @@
  
  <p><b>TracIt</b> is an app created to gather all your intended daily activities, sorted by day of the week, and track your performance fulfilling them. </p>
  <p align='center'>
-  <img src='Cineflex.gif' style='  display:block; margin: 0 auto;'>
+  <img src='TrackIt.gif' style='  display:block; margin: 0 auto;'>
 </p>
 
 <h1> About </h1>
